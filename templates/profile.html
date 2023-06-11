@@ -1,0 +1,66 @@
+{% extends 'Layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Profile Page</h2>
+<div>
+    <p>Your account details are below:</p>
+    <table>
+    {% if session['loggedin'] == True %} 
+        <tr>
+            <td>First name:</td>
+            <td>{{ account['Fname'] }}</td>
+        </tr>
+
+        <tr>
+            <tr>
+                <td>Last name:</td>
+                <td>{{ account['Lname'] }}</td>
+            </tr>
+
+        <tr>
+
+            <td>Password:</td>
+            <td>{{ account['password'] }}</td>
+        </tr>
+
+        <tr>
+            
+            <td>Email:</td>
+            <td>{{ account['email'] }}</td>
+           
+        </tr>
+ {% endif %}
+
+
+ {% if session['loggedinA'] == True%} 
+ <tr>
+     <td>First name:</td>
+     <td>{{ account['Fname'] }}</td>
+ </tr>
+
+ <tr>
+     <tr>
+         <td>Last name:</td>
+         <td>{{ account['Lname'] }}</td>
+     </tr>
+
+ <tr>
+
+     <td>Password:</td>
+     <td>{{ account['password'] }}</td>
+ </tr>
+
+ <tr>
+     
+     <td>Id:</td>
+     <td>{{ account['Id'] }}</td>
+    
+ </tr>
+{% endif %}
+
+
+    </table>
+</div>
+{% endblock %}

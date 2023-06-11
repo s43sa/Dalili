@@ -1,0 +1,89 @@
+{% extends "Layout.html" %}
+{% block content %}
+
+<h1>Start searching</h1>
+<script type="text/javascript" src="{{ url_for('static',filename='Style/jquery-2.2.4.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='Style/jquery.multi-select.js') }}"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Style/example-styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Style/main.css') }}">
+<center><form action="{{ url_for('Quiz') }}" method="post">
+<br>
+<title>Search for idea</title>
+<fieldset>
+            <label for="name">Project Category </label> 
+            <select  id="sel2" name="sel2">
+          <option > </option>
+          <option>Artificial Intelligence</option>
+          <option>Computer Vision and Graphics</option>
+          <option>Desktop Application</option>
+          <option>Information and Database management</option>
+          <option>Information Security</option>
+          <option>Internet of Thing</option>
+          <option>Machine Learning</option>
+          <option>Mobile Application</option>
+          <option>Software Engineering</option>
+          <option> Web Application</option>       
+            </select> <br><br>
+
+        <label for="Descrip">Desecription</label>
+        <textarea  id="Descrip1" name="Descrip1"  
+        placeholder="Write the description of the project"rows="6" cols="40" value="{{ request.form['Descrip1'] }}"></textarea>
+        <br><br>
+
+        <label for="featcher">Project Languages</label>
+        <div id="list2" class="dropdown-check-list" tabindex="100">
+          <span class="anchor">Select</span>
+          <ul class="items"  >
+           
+            <li><input type="checkbox" id="lang1" name="lang1"  value="Cpp"/>c++</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="C_sharp"/>c# </li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="css"/>css </li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="dart"/>dart </li>
+            <li><input type="checkbox" id="lang1" name="lang1"   value="html"/>html</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="java"/>java</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="javascript" />javascript </li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="kotlin"/>kotlin</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="python"/>python</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="swift" />swift</li>
+            <li><input type="checkbox" id="lang1" name="lang1"  value="other" />other</li>
+          </ul>
+        </div>
+       
+      </fieldset> 
+  
+      <button class="button2" id="searching" >Search</button>  
+    </form></center>
+    <br><br>  <br><br>  <br><br>  <br><br>
+   
+  {% if Rec_ideas is defined and Rec_ideas|length > 0 %} 
+  {% for i in range(5) %}
+  {% set str1=Rec_ideas[i]%}
+   <span class="idea">
+   <span style="color:#ffff"> Idea's summary:</span> {{str1[1]}}<br>
+   <span style="color:#fff"> Category: </span>{{str1[0]}} <br>
+   <span style="color:#fff"> Languages: </span>{{str1[2]}}<br>
+   <span style="color:#fff">  University: </span>{{str1[3]}}<br>
+   <span style="color:#fff">  Need Hardware(0 No - 1 Yes): </span>{{str1[5]}} <br>
+   <span style="color:#fff">   More Information :</span>
+   <a href="{{str1[4]}}"> {{str1[4]}}  </a> 
+    </span> 
+
+
+  {% endfor %}
+  {% endif %}
+
+
+    <script>
+var checkList = document.getElementById('list2');
+checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+  if (checkList.classList.contains('visible'))
+    checkList.classList.remove('visible');
+  else
+    checkList.classList.add('visible');
+}
+
+</script>
+
+
+{% endblock content %}

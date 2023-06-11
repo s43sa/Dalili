@@ -1,0 +1,52 @@
+{% extends "Layout.html" %}
+{% block content %}
+    <h1>Sign in</h1>
+    <br><br><br>
+    <center><form  action="{{ url_for('Sign') }}" method="post" >
+      <fieldset>
+   
+        <label for="Email">Email</label>
+        <input type="text" id="email" name="email" value=""><br><br><br>
+        <label for="Password">Password</label>
+        <input type="password" id="password" name="password" value=""> <br><br>
+        <a href="http://127.0.0.1:5000/Check">Fogot Prassword?</a> <br>
+         <input type="checkbox" onclick="myFunction()" class="position">Show Password
+         </fieldset>
+         <div >{{ msg }}</div><br><br>
+        <button class="button2" value="Login"  id="cancel">Sign in</button> 
+      </form> </center>
+
+           </center> <form action="{{ url_for('SignAdmin') }}" method="post" > 
+           <input type="hidden" id="ID" name="ID" >
+           <input type="hidden" id="pass" name="pass" >
+        <button class="button2" value="Admin" id="add" onclick="getValues()"  >Admin</button>
+        </form></center>
+      
+    <p class="p2">Don't have account?
+
+<a href="http://127.0.0.1:5000/SignUp">Sign up</a></p>
+  
+  
+
+
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+  function getValues(){
+    email = document.getElementById("email");
+   password =  document.getElementById("password");
+   Id = document.getElementById("ID");
+   pass =  document.getElementById("pass");
+   Id.value = email.value;
+   pass.value = password.value;
+
+  }
+  </script>
+{% endblock content %}

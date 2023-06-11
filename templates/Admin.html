@@ -1,0 +1,157 @@
+{% extends "Layout.html" %}
+{% block content %}
+<h1>Add new Project</h1>
+<br><br><br>
+<script type="text/javascript" src="{{ url_for('static',filename='Style/jquery-2.2.4.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='Style/jquery.multi-select.js') }}"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Style/example-styles.css') }}">
+
+
+  <center><form action="{{ url_for('Admin') }}" method="post">
+
+
+        <title>Add new Project</title>
+        <fieldset>
+              <label for="name">Project Category </label> 
+              <select onchange="getOther()" id="sel" name="sel">
+            <option>Artificial Intelligence</option>
+            <option>Computer Vision and Graphics</option>
+            <option>Desktop Application</option>
+            <option>Information and Database management</option>
+            <option>Information Security</option>
+            <option>Internet of Thing</option>
+            <option>Machine Learning</option>
+            <option>Mobile Application</option>
+            <option>Software Engineering</option>
+            <option> Web Application</option>
+            <option >  other</option>
+              </select> <br><br>
+          <input type="hidden" id="other" placeholder="Write the project Category"> <br><br>
+              <label for="Descrip">Desecription</label>
+          <textarea  id="Descrip" name="Descrip"  placeholder="Write the description of the project"rows="6" cols="40"></textarea>
+          <br><br><br>
+          <label for="featcher">Project Languages</label>
+
+  <div id="list1" class="dropdown-check-list" tabindex="100">
+    <span class="anchor">Select</span>
+    <ul class="items"  >
+      <li><input type="checkbox" id="lang" name="lang"  value="Cpp"/>C++</li>
+      <li><input type="checkbox" id="lang" name="lang"  value="C_sharp"/>C# </li>
+      <li><input type="checkbox" id="lang" name="lang"  value="CSS"/>CSS </li>
+      <li><input type="checkbox" id="lang" name="lang"  value="Dart"/>Dart </li>
+      <li><input type="checkbox"id="lang" name="lang"   value="HTML"/>HTML</li>
+      <li><input type="checkbox" id="lang" name="lang"  value="Java"/>Java</li>
+      <li><input type="checkbox" id="lang" name="lang" value="JavaScript" />JavaScript </li>
+      <li><input type="checkbox" id="lang" name="lang"  value="Kotlin"/>Kotlin</li>
+      <li><input type="checkbox" id="lang" name="lang"  value="Python"/>Python</li>
+      <li><input type="checkbox" id="lang" name="lang"  value="Swift" />Swift</li>
+      <li><input type="checkbox"  id="lang" name="lang" onclick="getOtherLang(this)" />Other</li>
+    </ul>
+  </div>
+
+        <br><br>
+        <input type="hidden" id="others" placeholder="Write the project languages"> <br><br>
+        <br><br>
+         <label for="University" >University Nmae </label>
+        
+       <select id="uni" onchange="getOtherUni()" name="uni">
+        <option>UMM ALQura </option>
+        <option >princess noura university</option>
+        <option> Palestine Polytechnic University </option>
+        <option> University of Victoria</option>
+        <option > imam abdulrahman bin faisal university</option>
+        <option> Majmaah university</option> 
+        <option> AN Najah national university</option> 
+        <option>Misr International University</option> 
+        <option>Al-Mustaqbal University</option> 
+        <option>Other</option> 
+
+        </select>
+      
+        <br><br>
+        <input type="hidden" id="otherUni" placeholder="Write the university languages"> 
+        <br><br>
+        <label for="link">University Link </label>
+        <input  type="url" id="link" name="link" ><br><br><br>
+      <div> <label> Does it need a Hardware ?   
+<input type="radio" id="Yes" name="hw" value="0">
+Yes
+<input type="radio" id="No" name="hw" value="1">
+No</div>
+ </label>
+ <br><br><br><br>
+      </fieldset>
+      <div >{{ msg }}</div>
+      <br><br>
+        <button class="button2" id="cancel" >Cancel</button>
+        <button class="button2"  id="add" onclick="confirm()" >Add</button>
+        
+        <br><br>
+      </form> </center>
+
+
+
+      <script>
+
+        function getOther(){
+          sel=document.getElementById("sel").value;
+          if( sel == "other"){
+          x = document.getElementById("other");
+          x.type = "text"; 
+          
+
+          }
+          else{
+            x = document.getElementById("other");
+          x.type = "hidden";      
+          }
+        }
+   function getOtherLang(checkbox){
+     
+          if( checkbox.checked){
+          x = document.getElementById("others");
+          x.type = "text";   
+         
+          }
+          else{
+            x = document.getElementById("others");
+          x.type = "hidden";      
+          }
+          
+        }
+      
+        function getOtherUni(){
+          sel=document.getElementById("uni").value;
+          if( sel == "Other"){
+          x = document.getElementById("otherUni");
+          x.type = "text"; 
+
+          }
+          else{
+            x = document.getElementById("otherUni");
+          x.type = "hidden";      
+          }
+          
+        }
+     
+var checkList = document.getElementById('list1');
+checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+  if (checkList.classList.contains('visible'))
+    checkList.classList.remove('visible');
+  else
+    checkList.classList.add('visible');
+}
+
+
+function confirm() {
+  confirm("The project has been added successfully");
+}
+
+
+      </script>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "Layout.html" %}
+{% block content %} 
+    <br>
+    <h1>Decision support system</h1>
+    <br>
+    <h3>Our website help you to find the best ideas for graduation projects</3>
+        <br><br><br><br><br>
+        <div >{{ msg }}</div><br><br>
+        <form action="http://127.0.0.1:5000/Quiz">
+  <input type="image" src="{{url_for('static', filename='SearchIcon.png')}} "alt="Take the quiz"  width="250" height="210" class="button">
+
+  </form>
+{% endblock content %}

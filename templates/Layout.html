@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Style/main.css') }}">
+ 
+    {% if title %}
+        <title>Dalili - {{ title }}</title>
+    {% else %}
+        <title>Dalili</title>
+    {% endif %}
+</head>
+<body background="{{ url_for('static', filename='BG.png') }}"  >
+    <header >
+    
+        <div class="bar_sec">
+         
+          
+          
+
+         
+     
+          
+           <a  href="http://127.0.0.1:5000/index">
+                <img src="{{url_for('static', filename='logo.png')}}" height="140px">
+                </a>
+
+               
+                
+ 
+
+ <a href="http://127.0.0.1:5000/Sign" >
+ <img src="{{url_for('static', filename='Sign.png')}}" height="70px" class="img_loc" >  
+</a>
+<a href="http://127.0.0.1:5000/profile" class="edit" >Edit Profile</a>
+<a href="http://127.0.0.1:5000/logout" class="logout">LogOut</a> 
+
+    
+        
+    </header>
+
+       
+             
+              
+               
+             
+          
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+
+</body>
+</html>
